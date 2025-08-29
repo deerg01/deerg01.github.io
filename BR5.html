@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Introducing Sana(CV, Portfolio) </title>
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+
+ <style>
+  :root {
+    --bg: #ffffff;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --brand: #8b5cf6;
+    --brand-2: #06b6d4;
+    --accent: #f8fafc;
+    --border: #e5e7eb;
+
+    /* Typography */
+    --fz: 16.5px;  /* base font size */
+    --lh: 1.65;    /* base line height */
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family:
+      ui-sans-serif, system-ui, -apple-system, "SF Pro Text", Inter,
+      "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
+      "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    font-size: var(--fz);
+    line-height: var(--lh);
+    font-feature-settings: "kern" 1, "liga" 1;
+    font-variant-numeric: tabular-nums;
+    word-break: keep-all;
+    text-wrap: pretty;
+  }
+
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px 20px 96px;
+  }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid var(--border);
+    z-index: 50;
+  }
+  .nav {
+    max-width: 980px;
+    margin: 0 auto;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    padding: 12px 20px;
+  }
+  .nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .nav a:hover { color: var(--text); }
+  .brand {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: var(--text);
+    margin-right: auto;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--accent);
+    color: var(--muted);
+  }
+
+  /* Hero */
+  .hero {
+    display: grid;
+    padding: 28px 0 36px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 44px);
+    margin: 8px 0 0;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  /* Headings */
+  h2 {
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+  }
+  h3 {
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    margin: 0 0 8px;
+  }
+
+  .subtitle {
+    color: #4b5563;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 72ch; /* readable paragraph width */
+  }
+
+  /* Card */
+  .card {
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px; /* section spacing */
+  }
+  .card h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    letter-spacing: 0.2px;
+  }
+  .dots {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--brand);
+    box-shadow: 16px 0 0 var(--brand-2);
+  }
+
+  /* 프로젝트 카드 레이아웃 */
+  .project-list { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 900px) {
+    .project-list { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Chips */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .chip {
+    background: var(--accent);
+    border: 1px solid var(--border);
+    padding: 7px 12px;  /* slightly larger for readability */
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  /* List */
+  ul.clean {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+  }
+  ul.clean li {
+    margin: 8px 0;
+    line-height: 1.62;
+  }
+  ul.clean li strong {
+    color: #111827;
+    font-weight: 700;
+  }
+
+  /* Typography helpers */
+  .section-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    font-weight: 600;
+    margin: 16px 0 6px;
+  }
+  
+  .kicker {
+    color: var(--brand-2);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .em { color: #4f46e5; }
+  #projects .card .section-title {
+  color: #4f46e5; /* = .em color */
+}
+
+  /* Inline code tokens */
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: .95em;
+    background: var(--accent);
+    border: 1px solid var(--border);
+    padding: .12em .38em;
+    border-radius: .375rem;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 36px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  /* Button */
+  .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: var(--accent);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn:hover { filter: brightness(1.05); }
+
+  /* Print */
+  .print-only { display: none; }
+  @media print {
+    header, .btns, .footer { display: none !important; }
+    .container { padding: 0; }
+    .card { break-inside: avoid; border-color: #ddd; background: #fff; color: #000; }
+    body { background: #fff; color: #000; }
+    .print-only { display: block; }
+  }
+</style>
+
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="nav">
+      <div class="brand">Sana · Developer</div>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#skills">Skills</a>
+      <a href="#project">Project</a>
+      <a href="#education">Education</a>
+      <a class="pill" href="#" onclick="window.print();return false;">PDF DL</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" id="about">
+      <span class="kicker">Profile</span>
+      <h1>
+        <span class="em">Not just building code.</span>
+        But designing systems, refining models, extending frameworks into scalable realities.
+      </h1>
+      <p class="subtitle">
+        Global by nature, with roots in Korea and Japan. Grounded in logic, fueled by imagination
+      </p>
+    </section>
+
+    <!-- About Me -->
+<section class="card" id="aboutme" style="display:flex; gap:20px; align-items:flex-start;">
+  <!-- 프로필 사진 -->
+  <div style="flex-shrink:0;">
+    <img src="images/profile.jpg" alt="Profile photo" style="width:160px; border-radius:12px; border:1px solid var(--border);" />
+  </div>
+
+  <!-- 소개글 -->
+  <div>
+    <h2><span class="dots"></span>About Me</h2>
+    <p class="subtitle" style="margin-top:12px; line-height:1.7;">
+      As a developer, I pursue intuitive flows and logical clarity — shaping practical structures with a flexible mindset.
+      My process starts with blueprints and structured plans rather than improvisation. By grounding development in reasoning and architecture,
+      ensure that my work is not only functional but also sustainable and aligned with long-term goals.
+    </p>
+    <p class="subtitle" style="margin-top:12px; line-height:1.7;">
+      Current interests: Audio DSP, LLM Architecture, ML Optimization, iOS App Development
+    </p>
+  </div>
+</section>
+
+
+    <!-- Contact -->
+    <section class="card" id="contact">
+      <h2><span class="dots"></span>Contact</h2>
+      <ul class="clean">
+        <li><strong>Email</strong>: <a href="mailto:amazingxa@gmail.com">amazingxa@gmail.com</a></li>
+        <li><strong>GitHub</strong>: <a href="https://github.com/deerg01" target="_blank" rel="noopener">github.com/deerg01</a></li>
+        <li><strong>Location</strong>: Tokyo, Japan</li>
+      </ul>
+    </section>
+
+    <!-- Skills -->
+<section class="card" id="skills">
+  <h2><span class="dots"></span>Skills</h2>
+
+  <div class="section-title">Languages</div>
+  <div class="chips">
+    <span class="chip">Python</span>
+    <span class="chip">C++</span>
+    <span class="chip">Java</span>
+    <span class="chip">Swift · SwiftUI</span>
+    <span class="chip">Racket</span>
+    <span class="chip">Verilog</span>
+  </div>
+
+  <div class="section-title">Frameworks & Libraries</div>
+  <div class="chips">
+    <span class="chip">MapKit</span>
+    <span class="chip">PencilKit</span>
+    <span class="chip">Firebase · Firestore</span>
+    <span class="chip">SwiftData</span>
+    <span class="chip">NumPy</span>
+    <span class="chip">Pandas</span>
+    <span class="chip">Matplotlib</span>
+    <span class="chip">PyTorch</span>
+    <span class="chip">TensorFlow</span>
+  </div>
+
+  <div class="section-title">Platforms / Tools</div>
+  <div class="chips">
+    <span class="chip">iOS</span>
+    <span class="chip">Arduino</span>
+    <span class="chip">CMake</span>
+    <span class="chip">Docker</span>
+    <span class="chip">Git</span>
+    <span class="chip">CLI (bash, zsh)</span>
+  </div>
+
+  <div class="section-title">Database & Infra</div>
+  <div class="chips">
+    <span class="chip">MySQL</span>
+    <span class="chip">Firebase</span>
+    <span class="chip">CUDA</span>
+    <span class="chip">Anaconda</span>
+  </div>
+</section>
+
+<!-- Education -->
+    <section class="card" id="education">
+      <h2><span class="dots"></span>Education</h2>
+      <ul class="clean">
+        <li>
+          <strong>Apple Developer Academy @ POSTECH </strong>
+          <span style="color: rgb(99, 54, 245); font-size: 80%;">2025.03 - NOW</span>
+          <div class="subtitle">
+            iOS Application Development, UI/UX Design, User and Market Research</div>
+        </li>
+        <li>
+          <strong>Bachelor / Computer Software Engineering (Hanyang Univ.)</strong>
+          <span style="color: rgb(99, 54, 245); font-size: 80%;">2020.03 - 2025.02</span>
+          <div class="subtitle">Fundamentals of Programming, AI, DeepLearning, MachineLearning, DSP</div>
+        </li>
+      </ul>
+    </section>
+
+
+    <!-- Projects -->
+<section id="projects">
+  <h2 style="font-size:22px; margin:0 0 12px;"><span class="dots"></span>Projects</h2>
+
+  <div class="project-list">
+    <!-- Project Card -->
+    <article class="card" id="project-rootrip">
+      <h3 style="font-size:18px; margin:0 0 12px;">
+        <span class="dots"></span>Challenge 4 – Rootrip (iOS)
+      </h3>
+
+      <div class="section-title">Stack</div>
+      <div class="chips">
+        <span class="chip">Swift</span>
+        <span class="chip">SwiftUI</span>
+        <span class="chip">MapKit</span>
+        <span class="chip">PencilKit</span>
+        <span class="chip">Firebase/Firestore</span>
+        <span class="chip">SwiftData</span>
+        <span class="chip">Git</span>
+      </div>
+
+       <div class="section-title">Overview</div>
+  <p class="subtitle">
+    Rootrip unifies trip planning in one app — <strong>map exploration, route lookup, itinerary creation, and real-time collaboration</strong>.
+    It began as an effort to <strong>define missing capabilities, extend Apple frameworks, and build a coherent system</strong>,
+    rather than simply assembling features.
+  </p>
+
+  <div class="section-title">Key Challenges</div>
+  <ul class="clean">
+    <li><strong>MapKit overlay limits</strong>: no native per-segment styling or live updates on edited paths.</li>
+    <li><strong>PencilKit bitmap output</strong>: freehand strokes lacked closed-area recognition and vector scalability.</li>
+    <li><strong>Data consistency</strong>: multi-user planning required local (SwiftData) ↔ cloud (Firestore) sync with conflict policy.</li>
+  </ul>
+
+  <div class="section-title">Approach</div>
+  <ul class="clean">
+    <li><strong>Repository pattern</strong>: decoupled view models from storage; local-first <code>PKStroke</code> in SwiftData, commit at <code>PKDrawing</code>; itineraries sync instantly to Firestore.</li>
+    <li><strong>Custom path rendering</strong>: subclassed <code>MKOverlayRenderer</code> and overrode <code>draw</code> (CoreGraphics) for per-segment color/width with zoom-safe AA/scale.</li>
+    <li><strong>Closed-area detection</strong>: vectorized <code>PKStrokePoint</code>, ray-casting polygon close, area thresholding, and interpolated boundaries on zoom.</li>
+    <li><strong>Overlay orchestration</strong>: <code>OverlayManager</code> to prioritize annotations/drawings/routes with show/hide and state-based updates.</li>
+  </ul>
+
+  <div class="section-title">Outcome</div>
+  <ul class="clean">
+    <li>Delivered a <strong>multi-module</strong>, maintainable codebase and a responsive, layered map UI.</li>
+    <li>Evolved from app assembly to <strong>framework extension</strong>, adding the pieces the SDK lacked.</li>
+  </ul>
+</section>
+    </article>
+
+    <!-- 필요하면 여기에 다른 프로젝트 <article class="card"> … </article> 추가 -->
+  </div>
+</section>
+
+    <!-- Footer -->
+    <p class="footer">© <span id="year"></span> Sana — Built for GitHub Pages</p>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
