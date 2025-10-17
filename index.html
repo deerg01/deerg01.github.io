@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Introducing Sana(CV, Portfolio) </title>
+  <title>Introducing Sana(CV, Portfolio)</title>
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ko_KR" />
 
- <style>
+  <style>
   :root {
     --bg: #ffffff;
     --card: #ffffff;
@@ -147,27 +147,15 @@
   /* 프로젝트 카드 레이아웃 */
   @media (min-width: 900px) {
     .project-list { grid-template-columns: 1fr 1fr; }
-  } */
-.project-list{
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 16px;
-  justify-content: stretch;
-}
-
-/* 카드가 그리드 셀을 가득 채우도록 */
-.project-list > .card{
-  width: 100%;
-  justify-self: stretch;
-}
-
-/* 예전에 넣었던 :only-child 센터/최대폭 제한이 있다면 무효화 */
-.project-list > .card:only-child{
-  grid-column: auto;
-  justify-self: stretch;
-  max-width: none;
-}
-
+  }
+  .project-list{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    justify-content: stretch;
+  }
+  .project-list > .card{ width: 100%; justify-self: stretch; }
+  .project-list > .card:only-child{ grid-column: auto; justify-self: stretch; max-width: none; }
 
   /* Chips */
   .chips {
@@ -210,18 +198,21 @@
     font-weight: 600;
     margin: 16px 0 6px;
   }
-  
-  .kicker {
-    color: var(--brand-2);
-    font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
+  .kicker { color: var(--brand-2); font-weight: 600; font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
   .em { color: #4f46e5; }
-  #projects .card .section-title {
-  color: #4f46e5; /* = .em color */
-}
+  #projects .card .section-title { color: #4f46e5; }
+
+  /* Project links under title */
+  .project-links { margin: -6px 0 10px; }
+  .project-links .repo-link {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .project-links .repo-link:hover { color: var(--text); text-decoration: underline; }
 
   /* Inline code tokens */
   code {
@@ -266,8 +257,7 @@
     body { background: #fff; color: #000; }
     .print-only { display: block; }
   }
-</style>
-
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -276,9 +266,9 @@
       <div class="brand">Sana · Developer</div>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
-      <a href="#skills">Skills</a>
-      <a href="#project">Project</a>
       <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
       <a class="pill" href="#" onclick="window.print();return false;">PDF DL</a>
     </nav>
   </header>
@@ -297,26 +287,25 @@
     </section>
 
     <!-- About Me -->
-<section class="card" id="aboutme" style="display:flex; gap:20px; align-items:flex-start;">
-  <!-- 프로필 사진 -->
-  <div style="flex-shrink:0;">
-    <img src="images/profile.jpg" alt="Profile photo" style="width:160px; border-radius:12px; border:1px solid var(--border);" />
-  </div>
+    <section class="card" id="aboutme" style="display:flex; gap:20px; align-items:flex-start;">
+      <!-- 프로필 사진 -->
+      <div style="flex-shrink:0;">
+        <img src="images/profile.jpg" alt="Profile photo" style="width:160px; border-radius:12px; border:1px solid var(--border);" />
+      </div>
 
-  <!-- 소개글 -->
-  <div>
-    <h2><span class="dots"></span>About Me</h2>
-    <p class="subtitle" style="margin-top:12px; line-height:1.7;">
-      As a developer, I pursue intuitive flows and logical clarity — shaping practical structures with a flexible mindset.
-      My process starts with blueprints and structured plans rather than improvisation. By grounding development in reasoning and architecture,
-      ensure that my work is not only functional but also sustainable and aligned with long-term goals.
-    </p>
-    <p class="subtitle" style="margin-top:12px; line-height:1.7;">
-      Current interests: Audio DSP, LLM Architecture, ML Optimization, iOS App Development
-    </p>
-  </div>
-</section>
-
+      <!-- 소개글 -->
+      <div>
+        <h2><span class="dots"></span>About Me</h2>
+        <p class="subtitle" style="margin-top:12px; line-height:1.7;">
+          As a developer, I pursue intuitive flows and logical clarity — shaping practical structures with a flexible mindset.
+          My process starts with blueprints and structured plans rather than improvisation. By grounding development in reasoning and architecture,
+          ensure that my work is not only functional but also sustainable and aligned with long-term goals.
+        </p>
+        <p class="subtitle" style="margin-top:12px; line-height:1.7;">
+          Current interests: Audio DSP, LLM Architecture, ML Optimization, iOS App Development
+        </p>
+      </div>
+    </section>
 
     <!-- Contact -->
     <section class="card" id="contact">
@@ -328,61 +317,14 @@
       </ul>
     </section>
 
-    <!-- Skills -->
-<section class="card" id="skills">
-  <h2><span class="dots"></span>Skills</h2>
-
-  <div class="section-title">Languages</div>
-  <div class="chips">
-    <span class="chip">Python</span>
-    <span class="chip">C++</span>
-    <span class="chip">Java</span>
-    <span class="chip">Swift · SwiftUI</span>
-    <span class="chip">Racket</span>
-    <span class="chip">Verilog</span>
-  </div>
-
-  <div class="section-title">Frameworks & Libraries</div>
-  <div class="chips">
-    <span class="chip">MapKit</span>
-    <span class="chip">PencilKit</span>
-    <span class="chip">Firebase · Firestore</span>
-    <span class="chip">SwiftData</span>
-    <span class="chip">NumPy</span>
-    <span class="chip">Pandas</span>
-    <span class="chip">Matplotlib</span>
-    <span class="chip">PyTorch</span>
-    <span class="chip">TensorFlow</span>
-  </div>
-
-  <div class="section-title">Platforms / Tools</div>
-  <div class="chips">
-    <span class="chip">iOS</span>
-    <span class="chip">Arduino</span>
-    <span class="chip">CMake</span>
-    <span class="chip">Docker</span>
-    <span class="chip">Git</span>
-    <span class="chip">CLI (bash, zsh)</span>
-  </div>
-
-  <div class="section-title">Database & Infra</div>
-  <div class="chips">
-    <span class="chip">MySQL</span>
-    <span class="chip">Firebase</span>
-    <span class="chip">CUDA</span>
-    <span class="chip">Anaconda</span>
-  </div>
-</section>
-
-<!-- Education -->
+    <!-- Education -->
     <section class="card" id="education">
       <h2><span class="dots"></span>Education</h2>
       <ul class="clean">
         <li>
           <strong>Apple Developer Academy @ POSTECH </strong>
           <span style="color: rgb(99, 54, 245); font-size: 80%;">2025.03 - NOW</span>
-          <div class="subtitle">
-            iOS Application Development, UI/UX Design, User and Market Research</div>
+          <div class="subtitle">iOS Application Development, UI/UX Design, User and Market Research</div>
         </li>
         <li>
           <strong>Bachelor / Computer Software Engineering (Hanyang Univ.)</strong>
@@ -392,62 +334,154 @@
       </ul>
     </section>
 
-
     <!-- Projects -->
-<section id="projects">
-  <h2 style="font-size:22px; margin:0 0 12px;"><span class="dots"></span>Projects</h2>
+    <section id="projects">
+      <h2 style="font-size:22px; margin:0 0 12px;"><span class="dots"></span>Projects</h2>
 
-  <div class="project-list">
-    <!-- Project Card -->
-    <article class="card" id="project-rootrip">
-      <h3 style="font-size:18px; margin:0 0 12px;">
-        <span class="dots"></span>Challenge 4 – Rootrip (iOS)
-      </h3>
+      <div class="project-list">
 
-      <div class="section-title">Stack</div>
+        <!-- Project Card: Challenge 6 (macOS) -->
+        <article class="card" id="project-c6">
+          <h3 style="font-size:18px; margin:0 0 12px;">
+            <span class="dots"></span>Challenge 6 – Untitled(macOS) *In progress
+          </h3>
+          <div class="project-links">
+            <!-- <a class="repo-link" href="#" target="_blank" rel="noopener">GitHub ↗</a> -->
+          </div>
+
+          <div class="section-title">Stack</div>
+          <div class="chips">
+            <span class="chip">Algorithms</span>
+            <span class="chip">AIML</span>
+            <span class="chip">PDF Parsing</span>
+            <span class="chip">Tokenization</span>
+            <span class="chip">Classification</span>
+            <span class="chip">Table Data Processing</span>
+            <span class="chip">macOS</span>
+          </div>
+
+          <div class="section-title">Overview</div>
+          <p class="subtitle">
+            In film production, converting <strong>scenario(text)</strong> into structured <strong>scene lists (tabular data)</strong> has been mostly manual. This project aims to automate that process — letting users upload a scenario PDF and receive a draft scene-list matching a common Excel format through <strong>keyword classification</strong> and <strong>context inference</strong>.
+          </p>
+
+          <div class="section-title">Key Challenges</div>
+          <ul class="clean">
+            <li><strong>Parser design for diverse formats</strong>: handle multiple header patterns and textual forms (directions, dialogue, narration) robustly.</li>
+            <li><strong>Keyword labeling algorithm</strong>: extract and tag elements such as <strong>locations, character names, and time cues</strong> without relying on AI models.</li>
+            <li><strong>AI-based inference</strong>: provide <strong>summaries</strong> and infer contextual data like <strong>time of day (day/night)</strong> to enrich scene metadata.</li>
+          </ul>
+
+          <div class="section-title">Approach</div>
+          <ul class="clean">
+            <li><strong>Modular parser</strong>: PDFKit extraction with structural heuristics; Vision-based OCR fallback for embedded fonts.</li>
+            <li><strong>Token classification</strong>: regex/FSM-based keyword detection refined by context rules.</li>
+            <li><strong>AI inference layer</strong>: lightweight transformer summarizer and time inference using contextual cues.</li>
+          </ul>
+
+          <div class="section-title">Outcome(In progress)</div>
+          <ul class="clean">
+            <li> <strong>In progress</strong>: core parser and keyword labeling stable; AI summarization prototype under testing.</li>
+          </ul>
+        </article>
+
+        <!-- Project Card: Rootrip -->
+        <article class="card" id="project-rootrip">
+          <h3 style="font-size:18px; margin:0 0 12px;">
+            <span class="dots"></span>Challenge 4 – Rootrip (iOS)
+          </h3>
+          <div class="project-links">
+            <!-- TODO: replace # with your repository URL -->
+            <a class="repo-link" href="https://github.com/DeveloperAcademy-POSTECH/2025-C4-M7-TPAP.git" target="_blank" rel="noopener">Git Repository ↗</a>
+          </div>
+
+          <div class="section-title">Stack</div>
+          <div class="chips">
+            <span class="chip">Swift</span>
+            <span class="chip">SwiftUI</span>
+            <span class="chip">MapKit</span>
+            <span class="chip">PencilKit</span>
+            <span class="chip">Firebase/Firestore</span>
+            <span class="chip">SwiftData</span>
+            <span class="chip">Git</span>
+          </div>
+
+          <div class="section-title">Overview</div>
+          <p class="subtitle">
+            Rootrip unifies trip planning in one app — <strong>map exploration, route lookup, itinerary creation, and real-time collaboration</strong>.
+            It began as an effort to <strong>define missing capabilities, extend Apple frameworks, and build a coherent system</strong>,
+            rather than simply assembling features.
+          </p>
+
+          <div class="section-title">Key Challenges</div>
+          <ul class="clean">
+            <li><strong>MapKit overlay limits</strong>: no native per-segment styling or live updates on edited paths.</li>
+            <li><strong>PencilKit bitmap output</strong>: freehand strokes lacked closed-area recognition and vector scalability.</li>
+            <li><strong>Data consistency</strong>: multi-user planning required local (SwiftData) ↔ cloud (Firestore) sync with conflict policy.</li>
+          </ul>
+
+          <div class="section-title">Approach</div>
+          <ul class="clean">
+            <li><strong>Repository pattern</strong>: decoupled view models from storage; local-first <code>PKStroke</code> in SwiftData, commit at <code>PKDrawing</code>; itineraries sync instantly to Firestore.</li>
+            <li><strong>Custom path rendering</strong>: subclassed <code>MKOverlayRenderer</code> and overrode <code>draw</code> (CoreGraphics) for per-segment color/width with zoom-safe AA/scale.</li>
+            <li><strong>Closed-area detection</strong>: vectorized <code>PKStrokePoint</code>, ray-casting polygon close, area thresholding, and interpolated boundaries on zoom.</li>
+            <li><strong>Overlay orchestration</strong>: <code>OverlayManager</code> to prioritize annotations/drawings/routes with show/hide and state-based updates.</li>
+          </ul>
+
+          <div class="section-title">Outcome</div>
+          <ul class="clean">
+            <li>Delivered a <strong>multi-module</strong>, maintainable codebase and a responsive, layered map UI.</li>
+            <li>Evolved from app assembly to <strong>framework extension</strong>, adding the pieces the SDK lacked.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills (bottom) -->
+    <section class="card" id="skills">
+      <h2><span class="dots"></span>Skills</h2>
+
+      <div class="section-title">Languages</div>
       <div class="chips">
-        <span class="chip">Swift</span>
-        <span class="chip">SwiftUI</span>
-        <span class="chip">MapKit</span>
-        <span class="chip">PencilKit</span>
-        <span class="chip">Firebase/Firestore</span>
-        <span class="chip">SwiftData</span>
-        <span class="chip">Git</span>
+        <span class="chip">Python</span>
+        <span class="chip">C++</span>
+        <span class="chip">Java</span>
+        <span class="chip">Swift · SwiftUI</span>
+        <span class="chip">Racket</span>
+        <span class="chip">Verilog</span>
       </div>
 
-       <div class="section-title">Overview</div>
-  <p class="subtitle">
-    Rootrip unifies trip planning in one app — <strong>map exploration, route lookup, itinerary creation, and real-time collaboration</strong>.
-    It began as an effort to <strong>define missing capabilities, extend Apple frameworks, and build a coherent system</strong>,
-    rather than simply assembling features.
-  </p>
+      <div class="section-title">Frameworks & Libraries</div>
+      <div class="chips">
+        <span class="chip">MapKit</span>
+        <span class="chip">PencilKit</span>
+        <span class="chip">Firebase · Firestore</span>
+        <span class="chip">SwiftData</span>
+        <span class="chip">NumPy</span>
+        <span class="chip">Pandas</span>
+        <span class="chip">Matplotlib</span>
+        <span class="chip">PyTorch</span>
+        <span class="chip">TensorFlow</span>
+      </div>
 
-  <div class="section-title">Key Challenges</div>
-  <ul class="clean">
-    <li><strong>MapKit overlay limits</strong>: no native per-segment styling or live updates on edited paths.</li>
-    <li><strong>PencilKit bitmap output</strong>: freehand strokes lacked closed-area recognition and vector scalability.</li>
-    <li><strong>Data consistency</strong>: multi-user planning required local (SwiftData) ↔ cloud (Firestore) sync with conflict policy.</li>
-  </ul>
+      <div class="section-title">Platforms / Tools</div>
+      <div class="chips">
+        <span class="chip">iOS</span>
+        <span class="chip">Arduino</span>
+        <span class="chip">CMake</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Git</span>
+        <span class="chip">CLI (bash, zsh)</span>
+      </div>
 
-  <div class="section-title">Approach</div>
-  <ul class="clean">
-    <li><strong>Repository pattern</strong>: decoupled view models from storage; local-first <code>PKStroke</code> in SwiftData, commit at <code>PKDrawing</code>; itineraries sync instantly to Firestore.</li>
-    <li><strong>Custom path rendering</strong>: subclassed <code>MKOverlayRenderer</code> and overrode <code>draw</code> (CoreGraphics) for per-segment color/width with zoom-safe AA/scale.</li>
-    <li><strong>Closed-area detection</strong>: vectorized <code>PKStrokePoint</code>, ray-casting polygon close, area thresholding, and interpolated boundaries on zoom.</li>
-    <li><strong>Overlay orchestration</strong>: <code>OverlayManager</code> to prioritize annotations/drawings/routes with show/hide and state-based updates.</li>
-  </ul>
-
-  <div class="section-title">Outcome</div>
-  <ul class="clean">
-    <li>Delivered a <strong>multi-module</strong>, maintainable codebase and a responsive, layered map UI.</li>
-    <li>Evolved from app assembly to <strong>framework extension</strong>, adding the pieces the SDK lacked.</li>
-  </ul>
-</section>
-    </article>
-
-    <!-- 필요하면 여기에 다른 프로젝트 <article class="card"> … </article> 추가 -->
-  </div>
-</section>
+      <div class="section-title">Database & Infra</div>
+      <div class="chips">
+        <span class="chip">MySQL</span>
+        <span class="chip">Firebase</span>
+        <span class="chip">CUDA</span>
+        <span class="chip">Anaconda</span>
+      </div>
+    </section>
 
     <!-- Footer -->
     <p class="footer">© <span id="year"></span> Sana — Built for GitHub Pages</p>
