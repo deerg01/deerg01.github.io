@@ -344,6 +344,60 @@
         display: block;
       }
     }
+
+    /* Nav Projects Dropdown */
+    .nav-projects {
+      position: relative;
+      font-size: 14px;
+    }
+
+    .nav-projects-trigger {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0;
+    }
+
+    .nav-projects-trigger:hover {
+      color: var(--text);
+    }
+
+    /* 드롭다운 박스 */
+    .nav-projects-menu {
+      position: absolute;
+      top: 140%;
+      left: 0;
+      min-width: 160px;
+      padding: 6px 0;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      display: none;
+      z-index: 60;
+    }
+
+    .nav-projects-menu a {
+      display: block;
+      padding: 6px 12px;
+      font-size: 13px;
+      color: #4b5563;
+      text-decoration: none;
+    }
+
+    .nav-projects-menu a:hover {
+      background: var(--accent);
+      color: var(--text);
+    }
+
+    .nav-projects.open .nav-projects-menu {
+      display: block;
+    }
   </style>
 </head>
 
@@ -355,11 +409,23 @@
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="#education">Education</a>
-      <a href="#projects">Projects</a>
+
+      <div class="nav-projects">
+        <button class="nav-projects-trigger" type="button">
+          Projects ▾
+        </button>
+        <div class="nav-projects-menu">
+          <a href="#project-scenergy">Scenergy (macOS)</a>
+          <a href="#project-rootrip">Rootrip (iOS)</a>
+          <a href="#project-grad-bert">Mixed Precision BERT</a>
+        </div>
+      </div>
+
       <a href="#skills">Skills</a>
       <a class="pill" href="#" onclick="window.print();return false;">PDF DL</a>
     </nav>
   </header>
+
 
   <main class="container">
     <!-- Hero -->
@@ -419,7 +485,8 @@
         <li>
           <strong>Apple Developer Academy @ POSTECH </strong>
           <span style="color: rgb(99, 54, 245); font-size: 80%;">2025.03 - NOW</span>
-          <div class="subtitle">Application Development, Apple Frameworks, UI/UX Design, User Understanding, Market Research</div>
+          <div class="subtitle">Application Development, Apple Frameworks, UI/UX Design, User Understanding, Market
+            Research</div>
         </li>
         <li>
           <strong>Bachelor / Computer Software Engineering (Hanyang Univ.)</strong>
@@ -430,16 +497,6 @@
     </section>
 
     <!-- Projects -->
-
-    <nav class="project-toc">
-      <div class="project-toc-title">Projects</div>
-      <ul>
-        <li><a href="#project-scenergy">Scenergy (macOS)</a></li>
-        <li><a href="#project-rootrip">Rootrip (iOS)</a></li>
-        <li><a href="#project-grad-bert">Mixed Precision BERT Quantization</a></li>
-      </ul>
-    </nav>
-
     <section id="projects">
       <h2 style="font-size:22px; margin:0 0 12px;"><span class="dots"></span>Projects</h2>
 
@@ -491,20 +548,23 @@
             <li><strong>Modular parser</strong>: <code>PDFKit</code> text extraction with structural heuristics;
               Vision-based OCR fallback for problematic fonts and embedded scans.</li>
             <li><strong>Token classification pipeline</strong>: regex/FSM-based detectors refined with context rules and
-              <code>CreateML</code> classifiers for higher labeling consistency.</li>
+              <code>CreateML</code> classifiers for higher labeling consistency.
+            </li>
             <li><strong>AI inference layer</strong>: iterative experiments comparing <code>CreateML</code> and
-              <code>Foundation Model</code> for keyword classification and implicit metadata inference.</li>
+              <code>Foundation Model</code> for keyword classification and implicit metadata inference.
+            </li>
             <li><strong>macOS UX optimization</strong>: shortcut-driven navigation, reduced input states, and processing
               loops optimized for minimal user effort.</li>
             <li><strong>Data structure for minimal user input</strong>: designed representations for scenario sources,
               editable scene-list structures, and export-ready CSV formats; implemented project-level JSON schemas and
-              <code>SwiftData</code> storage.</li>
+              <code>SwiftData</code> storage.
+            </li>
           </ul>
 
           <div class="section-title">Outcome (In progress)</div>
           <ul class="clean">
             <li>Implemented a robust <code>PDFKit</code> based parser that filters vector noise, extracts clean
-                text, and segments content into Foundation Model–compatible chunks without losing structural meaning.
+              text, and segments content into Foundation Model–compatible chunks without losing structural meaning.
             </li>
             <li><strong>High-accuracy hybrid system</strong>: Built a rule-based + ML hybrid labeling system that
               achieved <strong>FM-comparable accuracy</strong> when matched against a curated ground-truth set. Despite
@@ -515,7 +575,8 @@
               import/export routines, and SwiftData integration for persistence and fast updates.</li>
             <li><strong>Current status</strong>: parser and labeling pipeline fully functional; <code>CreateML</code> +
               <code>FM</code> inference stack stable; UX tests show significantly reduced manual editing time for
-              script-to-scene-list workflows.</li>
+              script-to-scene-list workflows.
+            </li>
           </ul>
         </article>
 
@@ -566,9 +627,11 @@
           <ul class="clean">
             <li><strong>Repository pattern</strong>: decoupled view models from storage; local-first
               <code>PKStroke</code> in SwiftData, commit at <code>PKDrawing</code>; itineraries sync instantly to
-              Firestore.</li>
+              Firestore.
+            </li>
             <li><strong>Custom path rendering</strong>: subclassed <code>MKOverlayRenderer</code> and overrode
-              <code>draw</code> (CoreGraphics) for per-segment color/width with zoom-safe AA/scale.</li>
+              <code>draw</code> (CoreGraphics) for per-segment color/width with zoom-safe AA/scale.
+            </li>
             <li><strong>Closed-area detection</strong>: vectorized <code>PKStrokePoint</code>, ray-casting polygon
               close, area thresholding, and interpolated boundaries on zoom.</li>
             <li><strong>Overlay orchestration</strong>: <code>OverlayManager</code> to prioritize
@@ -713,8 +776,33 @@
   </main>
 
   <script>
+    // footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Projects dropdown toggle
+    const projTrigger = document.querySelector('.nav-projects-trigger');
+    const projWrapper = document.querySelector('.nav-projects');
+
+    if (projTrigger && projWrapper) {
+      projTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = projWrapper.classList.contains('open');
+        document.querySelectorAll('.nav-projects.open').forEach(el => el.classList.remove('open'));
+        if (!isOpen) {
+          projWrapper.classList.add('open');
+        }
+      });
+
+      projWrapper.querySelector('.nav-projects-menu').addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+
+      document.addEventListener('click', () => {
+        projWrapper.classList.remove('open');
+      });
+    }
   </script>
+
 </body>
 
 </html>
