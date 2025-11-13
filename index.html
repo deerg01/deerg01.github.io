@@ -204,7 +204,7 @@
 
   /* Project links under title */
   .project-links { margin: -6px 0 10px; }
-  .project-links .repo-link {
+  .project-links .link {
     font-size: 12px;
     color: var(--muted);
     text-decoration: none;
@@ -212,7 +212,7 @@
     align-items: center;
     gap: 6px;
   }
-  .project-links .repo-link:hover { color: var(--text); text-decoration: underline; }
+  .project-links .link:hover { color: var(--text); text-decoration: underline; }
 
   /* Inline code tokens */
   code {
@@ -346,7 +346,7 @@
             <span class="dots"></span>Challenge 6 – Scenergy (macOS) *In progress
           </h3>
           <div class="project-links">
-            <a class="App Store" href="https://apps.apple.com/kr/app/scenergy/id6754666956?mt=12" target="_blank" rel="noopener">App Store ↗</a>
+            <a class="link" href="https://apps.apple.com/kr/app/scenergy/id6754666956?mt=12" target="_blank" rel="noopener">App Store ↗</a>
           </div>
 
           <div class="section-title">Stack</div>
@@ -354,29 +354,33 @@
             <span class="chip">Algorithms</span>
             <span class="chip">AIML</span>
             <span class="chip">PDF Parsing</span>
-            <span class="chip">Tokenization</span>
             <span class="chip">Classification</span>
             <span class="chip">Table Data Processing</span>
             <span class="chip">macOS</span>
+            <span class="chip">PDFKit</span>
+            <span class="chip">Foundation Model</span>
+            <span class="chip">Swift</span>
+            <span class="chip">Swift Data</span>
           </div>
 
           <div class="section-title">Overview</div>
           <p class="subtitle">
-            In film production, converting <strong>scenario(text)</strong> into structured <strong>scene lists (tabular data)</strong> has been mostly manual. This project aims to automate that process — letting users upload a scenario PDF and receive a draft scene-list matching a common Excel format through <strong>keyword classification</strong> and <strong>context inference</strong>.
+            In film production, converting <strong>scenario(text)</strong> into structured <strong>scene lists (tabular data)</strong> has been mostly manual. Scenergy aims to automate that process — letting users upload a scenario PDF and receive a draft scene-list matching a common Excel format through <strong>keyword classification</strong> and <strong>context inference</strong>.
           </p>
 
           <div class="section-title">Key Challenges</div>
           <ul class="clean">
-            <li><strong>Parser design for diverse formats</strong>: handle multiple header patterns and textual forms (directions, dialogue, narration) robustly.</li>
-            <li><strong>Keyword labeling algorithm</strong>: extract and tag elements such as <strong>locations, character names, and time cues</strong> without relying on AI models.</li>
-            <li><strong>AI-based inference</strong>: provide <strong>summaries</strong> and infer contextual data like <strong>time of day (day/night)</strong> to enrich scene metadata.</li>
+            <li><strong>Parsing diverse scenario formats</strong>: handling inconsistent headers and varying textual structures (directions, dialogue, narration) found in real scripts.</li>
+            <li><strong>Scene-label extraction</strong>: designing an algorithm to detect locations, characters, and temporal cues from NL text before applying any AI model.</li>
+            <li><strong>ML exploration & iteration</strong>: improving metadata extraction through CreateML models while comparing hybrid, rule-based, and FM-based inference strategies.</li>
           </ul>
 
           <div class="section-title">Approach</div>
           <ul class="clean">
-            <li><strong>Modular parser</strong>: PDFKit extraction with structural heuristics; Vision-based OCR fallback for embedded fonts.</li>
-            <li><strong>Token classification</strong>: regex/FSM-based keyword detection refined by context rules.</li>
-            <li><strong>AI inference layer</strong>: lightweight transformer summarizer and time inference using contextual cues.</li>
+            <li><strong>Modular parser</strong>: PDFKit text extraction with structural heuristics; Vision-based OCR fallback for problematic fonts and embedded scans.</li>
+            <li><strong>Token classification pipeline</strong>: regex/FSM-based detectors refined with context rules; CreateML-trained classifiers for higher labeling consistency.</li>
+            <li><strong>AI inference layer</strong>: iterative experiments from CreateML → lightweight transformer → Foundation Model prompting for scene summaries and implicit metadata inference.</li>
+            <li><strong>macOS UX optimization</strong>: shortcut-driven navigation, reduced input states, and processing loops optimized for minimal user effort.</li>
           </ul>
 
           <div class="section-title">Outcome(In progress)</div>
@@ -392,8 +396,8 @@
           </h3>
           <div class="project-links">
             <!-- TODO: replace # with your repository URL -->
-            <a class="repo-link" href="https://github.com/deerg01/2025-C4-M7-TPAP.git" target="_blank" rel="noopener">Git Repository ↗</a>
-            <a class="YouTube" href="https://youtu.be/Xsgog_Z1D_o?si=s6NUF43n42cPaUXz" target="_blank" rel="noopener">YouTube ↗</a>
+            <a class="link" href="https://github.com/deerg01/2025-C4-M7-TPAP.git" target="_blank" rel="noopener">Git Repository ↗</a>
+            <a class="link" href="https://youtu.be/Xsgog_Z1D_o?si=s6NUF43n42cPaUXz" target="_blank" rel="noopener">YouTube ↗</a>
           </div>
 
           <div class="section-title">Stack</div>
