@@ -313,6 +313,7 @@
       <ul class="clean">
         <li><strong>Email</strong>: <a href="mailto:amazingxa@gmail.com">amazingxa@gmail.com</a></li>
         <li><strong>GitHub</strong>: <a href="https://github.com/deerg01" target="_blank" rel="noopener">github.com/deerg01</a></li>
+        <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/xaa1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener">linkedin.com</a></li>
         <li><strong>Location</strong>: Seoul, Korea (+ Tokyo, Japan)</li>
       </ul>
     </section>
@@ -376,19 +377,19 @@
 
           <div class="section-title">Approach</div>
           <ul class="clean">
-            <li><strong>Modular parser</strong>: PDFKit text extraction with structural heuristics; Vision-based OCR fallback for problematic fonts and embedded scans.</li>
-            <li><strong>Token classification pipeline</strong>: regex/FSM-based detectors refined with context rules; CreateML-trained classifiers for higher labeling consistency.</li>
-            <li><strong>AI inference layer</strong>: iterative experiments from CreateML → lightweight transformer → Foundation Model prompting for scene summaries and implicit metadata inference.</li>
+            <li><strong>Modular parser</strong>: <code>PDFKit</code> text extraction with structural heuristics; Vision-based OCR fallback for problematic fonts and embedded scans.</li>
+            <li><strong>Token classification pipeline</strong>: regex/FSM-based detectors refined with context rules and <code>CreateML</code> classifiers for higher labeling consistency.</li>
+            <li><strong>AI inference layer</strong>: iterative experiments comparing <code>CreateML</code> and <code>Foundation Model</code> for keyword classification and implicit metadata inference.</li>
             <li><strong>macOS UX optimization</strong>: shortcut-driven navigation, reduced input states, and processing loops optimized for minimal user effort.</li>
-            <li><strong>Data structure for minimal user input</strong>: designed representations for scenario sources, editable scene-list structures, and export-ready CSV formats; implemented project-level JSON schemas and SwiftData storage.</li>
+            <li><strong>Data structure for minimal user input</strong>: designed representations for scenario sources, editable scene-list structures, and export-ready CSV formats; implemented project-level JSON schemas and <code>SwiftData</code> storage.</li>
           </ul>
 
           <div class="section-title">Outcome (In progress)</div>
           <ul class="clean">
-            <li><strong>PDF parser stability</strong>: Successfully implemented a robust PDFKit-based parser that filters vector noise, extracts clean text, and segments content into Foundation Model–compatible chunks without losing structural meaning.</li>
-            <li><strong>High-accuracy hybrid system</strong>: Built a rule-based + ML hybrid labeling system that achieved <strong>FM-comparable accuracy</strong> when matched against a curated ground-truth set. Despite the strong performance, Foundation Models were selected for production due to their superior ability to <strong>generate</strong> summaries and implicit metadata.</li>
+            <li><strong>Implemented a robust <code>PDFKit</code> based parser that filters vector noise, extracts clean text, and segments content into Foundation Model–compatible chunks without losing structural meaning.</li>
+            <li><strong>High-accuracy hybrid system</strong>: Built a rule-based + ML hybrid labeling system that achieved <strong>FM-comparable accuracy</strong> when matched against a curated ground-truth set. Despite the strong performance, <code>Foundation Models</code> were selected for production due to their superior ability to <strong>generate</strong> summaries and implicit metadata.</li>
             <li><strong>Practical data architecture</strong>: Implemented a scenario → scene-list data flow optimized for minimal user input, including JSON-based project structures, editable scene entities, CSV import/export routines, and SwiftData integration for persistence and fast updates.</li>
-            <li><strong>Current status</strong>: parser and labeling pipeline fully functional; CreateML + FM inference stack stable; UX tests show significantly reduced manual editing time for script-to-scene-list workflows.</li>
+            <li><strong>Current status</strong>: parser and labeling pipeline fully functional; <code>CreateML</code> + <code>FM</code> inference stack stable; UX tests show significantly reduced manual editing time for script-to-scene-list workflows.</li>
           </ul>
         </article>
 
@@ -454,7 +455,7 @@
         <span class="chip">Python</span>
         <span class="chip">C++</span>
         <span class="chip">Java</span>
-        <span class="chip">Swift · SwiftUI</span>
+        <span class="chip">Swift</span>
         <span class="chip">Racket</span>
       </div>
 
@@ -475,6 +476,7 @@
       <div class="section-title">Platforms / Tools</div>
       <div class="chips">
         <span class="chip">iOS</span>
+        <span class="chip">macOS</span>
         <span class="chip">Arduino</span>
         <span class="chip">CMake</span>
         <span class="chip">Docker</span>
