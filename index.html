@@ -563,20 +563,20 @@
 
           <div class="section-title">Outcome (In progress)</div>
           <ul class="clean">
-            <li>Implemented a robust <code>PDFKit</code> based parser that filters vector noise, extracts clean
-              text, and segments content into Foundation Model–compatible chunks without losing structural meaning.
-            </li>
-            <li><strong>High-accuracy hybrid system</strong>: Built a rule-based + ML hybrid labeling system that
-              achieved <strong>FM-comparable accuracy</strong> when matched against a curated ground-truth set. Despite
-              the strong performance, <code>Foundation Models</code> were selected for production due to their superior
-              ability to <strong>generate</strong> summaries and implicit metadata.</li>
-            <li><strong>Practical data architecture</strong>: Implemented a scenario → scene-list data flow optimized
-              for minimal user input, including JSON-based project structures, editable scene entities, CSV
-              import/export routines, and SwiftData integration for persistence and fast updates.</li>
             <li><strong>Current status</strong>: parser and labeling pipeline fully functional; <code>CreateML</code> +
               <code>FM</code> inference stack stable; UX tests show significantly reduced manual editing time for
               script-to-scene-list workflows.
             </li>
+            <li>Implemented a robust <code>PDFKit</code> based parser that filters vector noise, extracts clean
+              text, and segments content into Foundation Model–compatible chunks without losing structural meaning.
+            </li>
+            <li>Built a rule-based + ML hybrid labeling system that achieved <strong>FM-comparable accuracy</strong>
+              when matched against a curated ground-truth set. Despite
+              the strong performance, <code>Foundation Models</code> were selected for production due to their superior
+              ability to <strong>generate</strong> summaries and implicit metadata.</li>
+            <li>Implemented a scenario → scene-list data flow optimized
+              for minimal user input, including JSON-based project structures, editable scene entities, CSV
+              import/export routines, and SwiftData integration for persistence and fast updates.</li>
           </ul>
         </article>
 
@@ -692,8 +692,8 @@
 
           <div class="section-title">Approach</div>
           <ul class="clean">
-            <li><strong>Architectural grounding</strong>: reviewed core transformer and LLM papers (BERT, Q8BERT,
-              mixed-precision methods) to deepen understanding of self-attention, activation flow, and layer
+            <li><strong>Architectural grounding</strong>: reviewed core transformer and LLM papers to deepen
+              understanding of self-attention, activation flow, and layer
               sensitivity, forming hypotheses for where low precision is safe.</li>
             <li><strong>Per-layer analysis</strong>: examined before/after activation ranges, weight distributions, and
               input token sizes for each layer to measure tolerance to precision reduction in terms of stability and
@@ -710,14 +710,12 @@
 
           <div class="section-title">Outcome</div>
           <ul class="clean">
-            <li><strong>Mixed-precision BERT</strong>: built a model that <strong>automatically selects INT4 or INT8 per
+            <li>Built a Mixed-precision BERT model that <strong>automatically selects INT4 or INT8 per
                 layer</strong>, reducing computation while keeping accuracy close to FP32.</li>
-            <li><strong>Layer sensitivity insight</strong>: confirmed that <strong>self-attention layers generally
+            <li>confirmed that <strong>self-attention layers generally
                 require higher precision</strong>, while many FFN layers operate safely in INT4.</li>
-            <li><strong>Better than uniform INT4</strong>: showed that adaptive mixed precision clearly outperforms
+            <li>showed that adaptive mixed precision clearly outperforms
               uniform INT4 in stability and overall performance.</li>
-            <li><strong>Future directions</strong>: identified next steps such as evaluating on larger datasets,
-              refining clipping strategies, and measuring real-world speed improvements.</li>
           </ul>
         </article>
 
