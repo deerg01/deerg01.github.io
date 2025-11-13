@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,257 +9,344 @@
   <meta property="og:locale" content="ko_KR" />
 
   <style>
-  :root {
-    --bg: #ffffff;
-    --card: #ffffff;
-    --text: #111827;
-    --muted: #6b7280;
-    --brand: #8b5cf6;
-    --brand-2: #06b6d4;
-    --accent: #f8fafc;
-    --border: #e5e7eb;
+    :root {
+      --bg: #ffffff;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --brand: #8b5cf6;
+      --brand-2: #06b6d4;
+      --accent: #f8fafc;
+      --border: #e5e7eb;
 
-    /* Typography */
-    --fz: 16.5px;  /* base font size */
-    --lh: 1.65;    /* base line height */
-  }
+      /* Typography */
+      --fz: 16.5px;
+      /* base font size */
+      --lh: 1.65;
+      /* base line height */
+    }
 
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  body {
-    margin: 0;
-    font-family:
-      ui-sans-serif, system-ui, -apple-system, "SF Pro Text", Inter,
-      "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
-      "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    body {
+      margin: 0;
+      font-family:
+        ui-sans-serif, system-ui, -apple-system, "SF Pro Text", Inter,
+        "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
+        "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
 
-    font-size: var(--fz);
-    line-height: var(--lh);
-    font-feature-settings: "kern" 1, "liga" 1;
-    font-variant-numeric: tabular-nums;
-    word-break: keep-all;
-    text-wrap: pretty;
-  }
+      font-size: var(--fz);
+      line-height: var(--lh);
+      font-feature-settings: "kern" 1, "liga" 1;
+      font-variant-numeric: tabular-nums;
+      word-break: keep-all;
+      text-wrap: pretty;
+    }
 
-  .container {
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 48px 20px 96px;
-  }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 20px 96px;
+    }
 
-  /* Header */
-  header {
-    position: sticky;
-    top: 0;
-    backdrop-filter: blur(8px);
-    background: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid var(--border);
-    z-index: 50;
-  }
-  .nav {
-    max-width: 980px;
-    margin: 0 auto;
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    padding: 12px 20px;
-  }
-  .nav a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 14px;
-  }
-  .nav a:hover { color: var(--text); }
-  .brand {
-    font-weight: 700;
-    letter-spacing: 0.2px;
-    color: var(--text);
-    margin-right: auto;
-  }
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--accent);
-    color: var(--muted);
-  }
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid var(--border);
+      z-index: 50;
+    }
 
-  /* Hero */
-  .hero {
-    display: grid;
-    padding: 28px 0 36px;
-  }
-  h1 {
-    font-size: clamp(28px, 5vw, 44px);
-    margin: 8px 0 0;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-  }
-  /* Headings */
-  h2 {
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    margin: 0 0 8px;
-  }
-  h3 {
-    font-weight: 700;
-    letter-spacing: -0.005em;
-    margin: 0 0 8px;
-  }
+    .nav {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      padding: 12px 20px;
+    }
 
-  .subtitle {
-    color: #4b5563;
-    font-size: 15px;
-    line-height: 1.7;
-    max-width: 72ch; /* readable paragraph width */
-  }
+    .nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
 
-  /* Card */
-  .card {
-    border: 1px solid var(--border);
-    background: var(--card);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 24px; /* section spacing */
-  }
-  .card h2 {
-    font-size: 18px;
-    margin: 0 0 10px;
-    letter-spacing: 0.2px;
-  }
-  .dots {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    margin-right: 8px;
-    border-radius: 50%;
-    background: var(--brand);
-    box-shadow: 16px 0 0 var(--brand-2);
-  }
+    .nav a:hover {
+      color: var(--text);
+    }
 
-  /* 프로젝트 카드 레이아웃 */
-  @media (min-width: 900px) {
-    .project-list { grid-template-columns: 1fr 1fr; }
-  }
-  .project-list{
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0px;
-    justify-content: stretch;
-  }
-  .project-list > .card{ width: 100%; justify-self: stretch; }
-  .project-list > .card:only-child{ grid-column: auto; justify-self: stretch; max-width: none; }
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: var(--text);
+      margin-right: auto;
+    }
 
-  /* Chips */
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
-  .chip {
-    background: var(--accent);
-    border: 1px solid var(--border);
-    padding: 7px 12px;  /* slightly larger for readability */
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--muted);
-  }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--accent);
+      color: var(--muted);
+    }
 
-  /* List */
-  ul.clean {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0;
-  }
-  ul.clean li {
-    margin: 8px 0;
-    line-height: 1.62;
-  }
-  ul.clean li strong {
-    color: #111827;
-    font-weight: 700;
-  }
+    /* Hero */
+    .hero {
+      display: grid;
+      padding: 28px 0 36px;
+    }
 
-  /* Typography helpers */
-  .section-title {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--muted);
-    font-weight: 600;
-    margin: 16px 0 6px;
-  }
-  .kicker { color: var(--brand-2); font-weight: 600; font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
-  .em { color: #4f46e5; }
-  #projects .card .section-title { color: #4f46e5; }
+    h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      margin: 8px 0 0;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
 
-  /* Project links under title */
-  .project-links { margin: -6px 0 10px; }
-  .project-links .link {
-    font-size: 12px;
-    color: var(--muted);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .project-links .link:hover { color: var(--text); text-decoration: underline; }
+    /* Headings */
+    h2 {
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin: 0 0 8px;
+    }
 
-  /* Inline code tokens */
-  code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-    font-size: .95em;
-    background: var(--accent);
-    border: 1px solid var(--border);
-    padding: .12em .38em;
-    border-radius: .375rem;
-  }
+    h3 {
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      margin: 0 0 8px;
+    }
 
-  /* Footer */
-  .footer {
-    margin-top: 36px;
-    color: var(--muted);
-    font-size: 13px;
-    text-align: center;
-  }
+    .subtitle {
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 72ch;
+      /* readable paragraph width */
+    }
 
-  /* Button */
-  .btns { display: flex; gap: 10px; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    font-size: 13px;
-    padding: 10px 14px;
-    border-radius: 12px;
-    background: var(--accent);
-    border: 1px solid var(--border);
-    color: var(--text);
-  }
-  .btn:hover { filter: brightness(1.05); }
+    /* Card */
+    .card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+      /* section spacing */
+    }
 
-  /* Print */
-  .print-only { display: none; }
-  @media print {
-    header, .btns, .footer { display: none !important; }
-    .container { padding: 0; }
-    .card { break-inside: avoid; border-color: #ddd; background: #fff; color: #000; }
-    body { background: #fff; color: #000; }
-    .print-only { display: block; }
-  }
+    .card h2 {
+      font-size: 18px;
+      margin: 0 0 10px;
+      letter-spacing: 0.2px;
+    }
+
+    .dots {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 16px 0 0 var(--brand-2);
+    }
+
+    /* 프로젝트 카드 레이아웃 */
+    @media (min-width: 900px) {
+      .project-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .project-list {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0px;
+      justify-content: stretch;
+    }
+
+    .project-list>.card {
+      width: 100%;
+      justify-self: stretch;
+    }
+
+    .project-list>.card:only-child {
+      grid-column: auto;
+      justify-self: stretch;
+      max-width: none;
+    }
+
+    /* Chips */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .chip {
+      background: var(--accent);
+      border: 1px solid var(--border);
+      padding: 7px 12px;
+      /* slightly larger for readability */
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    /* List */
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+    }
+
+    ul.clean li {
+      margin: 8px 0;
+      line-height: 1.62;
+    }
+
+    ul.clean li strong {
+      color: #111827;
+      font-weight: 700;
+    }
+
+    /* Typography helpers */
+    .section-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      font-weight: 600;
+      margin: 16px 0 6px;
+    }
+
+    .kicker {
+      color: var(--brand-2);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .em {
+      color: #4f46e5;
+    }
+
+    #projects .card .section-title {
+      color: #4f46e5;
+    }
+
+    /* Project links under title */
+    .project-links {
+      margin: -6px 0 10px;
+    }
+
+    .project-links .link {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-links .link:hover {
+      color: var(--text);
+      text-decoration: underline;
+    }
+
+    /* Inline code tokens */
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: .95em;
+      background: var(--accent);
+      border: 1px solid var(--border);
+      padding: .12em .38em;
+      border-radius: .375rem;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* Button */
+    .btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--accent);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      filter: brightness(1.05);
+    }
+
+    /* Print */
+    .print-only {
+      display: none;
+    }
+
+    @media print {
+
+      header,
+      .btns,
+      .footer {
+        display: none !important;
+      }
+
+      .container {
+        padding: 0;
+      }
+
+      .card {
+        break-inside: avoid;
+        border-color: #ddd;
+        background: #fff;
+        color: #000;
+      }
+
+      body {
+        background: #fff;
+        color: #000;
+      }
+
+      .print-only {
+        display: block;
+      }
+    }
   </style>
 </head>
+
 <body>
   <!-- Header -->
   <header>
@@ -290,15 +378,18 @@
     <section class="card" id="aboutme" style="display:flex; gap:20px; align-items:flex-start;">
       <!-- 프로필 사진 -->
       <div style="flex-shrink:0;">
-        <img src="images/profile.jpg" alt="Profile photo" style="width:160px; border-radius:12px; border:1px solid var(--border);" />
+        <img src="images/profile.jpg" alt="Profile photo"
+          style="width:160px; border-radius:12px; border:1px solid var(--border);" />
       </div>
 
       <!-- 소개글 -->
       <div>
         <h2><span class="dots"></span>About Me</h2>
         <p class="subtitle" style="margin-top:12px; line-height:1.7;">
-          As a developer, I pursue intuitive flows and logical clarity — shaping practical structures with a flexible mindset.
-          My process starts with blueprints and structured plans rather than improvisation. By grounding development in reasoning and architecture,
+          As a developer, I pursue intuitive flows and logical clarity — shaping practical structures with a flexible
+          mindset.
+          My process starts with blueprints and structured plans rather than improvisation. By grounding development in
+          reasoning and architecture,
           ensure that my work is not only functional but also sustainable and aligned with long-term goals.
         </p>
         <p class="subtitle" style="margin-top:12px; line-height:1.7;">
@@ -312,8 +403,11 @@
       <h2><span class="dots"></span>Contact</h2>
       <ul class="clean">
         <li><strong>Email</strong>: <a href="mailto:amazingxa@gmail.com">amazingxa@gmail.com</a></li>
-        <li><strong>GitHub</strong>: <a href="https://github.com/deerg01" target="_blank" rel="noopener">github.com/deerg01</a></li>
-        <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/xaa1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener">linkedin.com</a></li>
+        <li><strong>GitHub</strong>: <a href="https://github.com/deerg01" target="_blank"
+            rel="noopener">github.com/deerg01</a></li>
+        <li><strong>LinkedIn</strong>: <a
+            href="https://www.linkedin.com/in/xaa1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+            target="_blank" rel="noopener">linkedin.com</a></li>
         <li><strong>Location</strong>: Seoul, Korea (+ Tokyo, Japan)</li>
       </ul>
     </section>
@@ -325,7 +419,7 @@
         <li>
           <strong>Apple Developer Academy @ POSTECH </strong>
           <span style="color: rgb(99, 54, 245); font-size: 80%;">2025.03 - NOW</span>
-          <div class="subtitle">Application Development, UI/UX Design, User Understanding, Market Research</div>
+          <div class="subtitle">Application Development, Apple Frameworks, UI/UX Design, User Understanding, Market Research</div>
         </li>
         <li>
           <strong>Bachelor / Computer Software Engineering (Hanyang Univ.)</strong>
@@ -347,7 +441,8 @@
             <span class="dots"></span>Challenge 6 – Scenergy (macOS) *In progress
           </h3>
           <div class="project-links">
-            <a class="link" href="https://apps.apple.com/kr/app/scenergy/id6754666956?mt=12" target="_blank" rel="noopener">App Store ↗</a>
+            <a class="link" href="https://apps.apple.com/kr/app/scenergy/id6754666956?mt=12" target="_blank"
+              rel="noopener">App Store ↗</a>
           </div>
 
           <div class="section-title">Stack</div>
@@ -365,31 +460,52 @@
 
           <div class="section-title">Overview</div>
           <p class="subtitle">
-            In film production, converting <strong>scenario(text)</strong> into structured <strong>scene lists (tabular data)</strong> has been mostly manual. Scenergy aims to automate that process — letting users upload a scenario PDF and receive a draft scene-list matching a common Excel format through <strong>keyword classification</strong> and <strong>context inference</strong>.
+            In film production, converting <strong>scenario(text)</strong> into structured <strong>scene lists (tabular
+              data)</strong> has been mostly manual. Scenergy aims to automate that process — letting users upload a
+            scenario PDF and receive a draft scene-list matching a common Excel format through <strong>keyword
+              classification</strong> and <strong>context inference</strong>.
           </p>
 
           <div class="section-title">Key Challenges</div>
           <ul class="clean">
-            <li><strong>Parsing diverse scenario formats</strong>: handling inconsistent headers and varying textual structures (directions, dialogue, narration) found in real scripts.</li>
-            <li><strong>Scene-label extraction</strong>: designing an algorithm to detect locations, characters, and temporal cues from NL text before applying any AI model.</li>
-            <li><strong>ML exploration & iteration</strong>: improving metadata extraction through CreateML models while comparing hybrid, rule-based, and FM-based inference strategies.</li>
+            <li><strong>Parsing diverse scenario formats</strong>: handling inconsistent headers and varying textual
+              structures (directions, dialogue, narration) found in real scripts.</li>
+            <li><strong>Scene-label extraction</strong>: designing an algorithm to detect locations, characters, and
+              temporal cues from NL text before applying any AI model.</li>
+            <li><strong>ML exploration & iteration</strong>: improving metadata extraction through CreateML models while
+              comparing hybrid, rule-based, and FM-based inference strategies.</li>
           </ul>
 
           <div class="section-title">Approach</div>
           <ul class="clean">
-            <li><strong>Modular parser</strong>: <code>PDFKit</code> text extraction with structural heuristics; Vision-based OCR fallback for problematic fonts and embedded scans.</li>
-            <li><strong>Token classification pipeline</strong>: regex/FSM-based detectors refined with context rules and <code>CreateML</code> classifiers for higher labeling consistency.</li>
-            <li><strong>AI inference layer</strong>: iterative experiments comparing <code>CreateML</code> and <code>Foundation Model</code> for keyword classification and implicit metadata inference.</li>
-            <li><strong>macOS UX optimization</strong>: shortcut-driven navigation, reduced input states, and processing loops optimized for minimal user effort.</li>
-            <li><strong>Data structure for minimal user input</strong>: designed representations for scenario sources, editable scene-list structures, and export-ready CSV formats; implemented project-level JSON schemas and <code>SwiftData</code> storage.</li>
+            <li><strong>Modular parser</strong>: <code>PDFKit</code> text extraction with structural heuristics;
+              Vision-based OCR fallback for problematic fonts and embedded scans.</li>
+            <li><strong>Token classification pipeline</strong>: regex/FSM-based detectors refined with context rules and
+              <code>CreateML</code> classifiers for higher labeling consistency.</li>
+            <li><strong>AI inference layer</strong>: iterative experiments comparing <code>CreateML</code> and
+              <code>Foundation Model</code> for keyword classification and implicit metadata inference.</li>
+            <li><strong>macOS UX optimization</strong>: shortcut-driven navigation, reduced input states, and processing
+              loops optimized for minimal user effort.</li>
+            <li><strong>Data structure for minimal user input</strong>: designed representations for scenario sources,
+              editable scene-list structures, and export-ready CSV formats; implemented project-level JSON schemas and
+              <code>SwiftData</code> storage.</li>
           </ul>
 
           <div class="section-title">Outcome (In progress)</div>
           <ul class="clean">
-            <li><strong>Implemented a robust <code>PDFKit</code> based parser that filters vector noise, extracts clean text, and segments content into Foundation Model–compatible chunks without losing structural meaning.</li>
-            <li><strong>High-accuracy hybrid system</strong>: Built a rule-based + ML hybrid labeling system that achieved <strong>FM-comparable accuracy</strong> when matched against a curated ground-truth set. Despite the strong performance, <code>Foundation Models</code> were selected for production due to their superior ability to <strong>generate</strong> summaries and implicit metadata.</li>
-            <li><strong>Practical data architecture</strong>: Implemented a scenario → scene-list data flow optimized for minimal user input, including JSON-based project structures, editable scene entities, CSV import/export routines, and SwiftData integration for persistence and fast updates.</li>
-            <li><strong>Current status</strong>: parser and labeling pipeline fully functional; <code>CreateML</code> + <code>FM</code> inference stack stable; UX tests show significantly reduced manual editing time for script-to-scene-list workflows.</li>
+            <li><strong>Implemented a robust <code>PDFKit</code> based parser that filters vector noise, extracts clean
+                text, and segments content into Foundation Model–compatible chunks without losing structural meaning.
+            </li>
+            <li><strong>High-accuracy hybrid system</strong>: Built a rule-based + ML hybrid labeling system that
+              achieved <strong>FM-comparable accuracy</strong> when matched against a curated ground-truth set. Despite
+              the strong performance, <code>Foundation Models</code> were selected for production due to their superior
+              ability to <strong>generate</strong> summaries and implicit metadata.</li>
+            <li><strong>Practical data architecture</strong>: Implemented a scenario → scene-list data flow optimized
+              for minimal user input, including JSON-based project structures, editable scene entities, CSV
+              import/export routines, and SwiftData integration for persistence and fast updates.</li>
+            <li><strong>Current status</strong>: parser and labeling pipeline fully functional; <code>CreateML</code> +
+              <code>FM</code> inference stack stable; UX tests show significantly reduced manual editing time for
+              script-to-scene-list workflows.</li>
           </ul>
         </article>
 
@@ -400,8 +516,10 @@
           </h3>
           <div class="project-links">
             <!-- TODO: replace # with your repository URL -->
-            <a class="link" href="https://github.com/deerg01/2025-C4-M7-TPAP.git" target="_blank" rel="noopener">Git Repository ↗</a>
-            <a class="link" href="https://youtu.be/Xsgog_Z1D_o?si=s6NUF43n42cPaUXz" target="_blank" rel="noopener">YouTube ↗</a>
+            <a class="link" href="https://github.com/deerg01/2025-C4-M7-TPAP.git" target="_blank" rel="noopener">Git
+              Repository ↗</a>
+            <a class="link" href="https://youtu.be/Xsgog_Z1D_o?si=s6NUF43n42cPaUXz" target="_blank"
+              rel="noopener">YouTube ↗</a>
           </div>
 
           <div class="section-title">Stack</div>
@@ -417,90 +535,118 @@
 
           <div class="section-title">Overview</div>
           <p class="subtitle">
-            Rootrip unifies trip planning in one app — <strong>map exploration, route lookup, itinerary creation, and real-time collaboration</strong>.
-            It began as an effort to <strong>define missing capabilities, extend Apple frameworks, and build a coherent system</strong>,
+            Rootrip unifies trip planning in one app — <strong>map exploration, route lookup, itinerary creation, and
+              real-time collaboration</strong>.
+            It began as an effort to <strong>define missing capabilities, extend Apple frameworks, and build a coherent
+              system</strong>,
             rather than simply assembling features.
           </p>
 
           <div class="section-title">Key Challenges</div>
           <ul class="clean">
-            <li><strong>MapKit overlay limits</strong>: no native per-segment styling or live updates on edited paths.</li>
-            <li><strong>PencilKit bitmap output</strong>: freehand strokes lacked closed-area recognition and vector scalability.</li>
-            <li><strong>Data consistency</strong>: multi-user planning required local (SwiftData) ↔ cloud (Firestore) sync with conflict policy.</li>
+            <li><strong>MapKit overlay limits</strong>: no native per-segment styling or live updates on edited paths.
+            </li>
+            <li><strong>PencilKit bitmap output</strong>: freehand strokes lacked closed-area recognition and vector
+              scalability.</li>
+            <li><strong>Data consistency</strong>: multi-user planning required local (SwiftData) ↔ cloud (Firestore)
+              sync with conflict policy.</li>
           </ul>
 
           <div class="section-title">Approach</div>
           <ul class="clean">
-            <li><strong>Repository pattern</strong>: decoupled view models from storage; local-first <code>PKStroke</code> in SwiftData, commit at <code>PKDrawing</code>; itineraries sync instantly to Firestore.</li>
-            <li><strong>Custom path rendering</strong>: subclassed <code>MKOverlayRenderer</code> and overrode <code>draw</code> (CoreGraphics) for per-segment color/width with zoom-safe AA/scale.</li>
-            <li><strong>Closed-area detection</strong>: vectorized <code>PKStrokePoint</code>, ray-casting polygon close, area thresholding, and interpolated boundaries on zoom.</li>
-            <li><strong>Overlay orchestration</strong>: <code>OverlayManager</code> to prioritize annotations/drawings/routes with show/hide and state-based updates.</li>
+            <li><strong>Repository pattern</strong>: decoupled view models from storage; local-first
+              <code>PKStroke</code> in SwiftData, commit at <code>PKDrawing</code>; itineraries sync instantly to
+              Firestore.</li>
+            <li><strong>Custom path rendering</strong>: subclassed <code>MKOverlayRenderer</code> and overrode
+              <code>draw</code> (CoreGraphics) for per-segment color/width with zoom-safe AA/scale.</li>
+            <li><strong>Closed-area detection</strong>: vectorized <code>PKStrokePoint</code>, ray-casting polygon
+              close, area thresholding, and interpolated boundaries on zoom.</li>
+            <li><strong>Overlay orchestration</strong>: <code>OverlayManager</code> to prioritize
+              annotations/drawings/routes with show/hide and state-based updates.</li>
           </ul>
 
           <div class="section-title">Outcome</div>
           <ul class="clean">
             <li>Delivered a <strong>multi-module</strong>, maintainable codebase and a responsive, layered map UI.</li>
-            <li>Evolved from app assembly to <strong>framework extension</strong>, adding the pieces the SDK lacked.</li>
+            <li>Evolved from app assembly to <strong>framework extension</strong>, adding the pieces the SDK lacked.
+            </li>
           </ul>
         </article>
 
-        <!-- Project Card: Graduation Project – Mixed Precision BERT -->
-<article class="card" id="project-grad-bert">
-  <h3 style="font-size:18px; margin:0 0 12px;">
-    <span class="dots"></span>Graduation Project – Mixed Precision BERT Quantization
-  </h3>
+        <!-- Project Card: Graduation Project -->
+        <article class="card" id="project-grad-bert">
+          <h3 style="font-size:18px; margin:0 0 12px;">
+            <span class="dots"></span>Graduation Project – Mixed Precision BERT Quantization
+          </h3>
 
-  <div class="project-links">
-    <!-- <a class="repo-link" href="#" target="_blank" rel="noopener">GitHub ↗</a> -->
-  </div>
+          <div class="project-links">
+            <!-- <a class="repo-link" href="#" target="_blank" rel="noopener">GitHub ↗</a> -->
+          </div>
 
-  <div class="section-title">Stack</div>
-  <div class="chips">
-    <span class="chip">Transformers</span>
-    <span class="chip">BERT</span>
-    <span class="chip">NLP</span>
-    <span class="chip">Quantization</span>
-    <span class="chip">Mixed Precision</span>
-    <span class="chip">QAT</span>
-    <span class="chip">PyTorch</span>
-    <span class="chip">GLUE / MRPC</span>
-  </div>
+          <div class="section-title">Stack</div>
+          <div class="chips">
+            <span class="chip">Transformer Model</span>
+            <span class="chip">BERT</span>
+            <span class="chip">NLP</span>
+            <span class="chip">Quantization</span>
+            <span class="chip">QAT / PTQ</span>
+            <span class="chip">PyTorch</span>
+            <span class="chip">GLUE / MRPC</span>
+          </div>
 
-  <div class="section-title">Overview</div>
-  <p class="subtitle">
-    This project investigates <strong>mixed-precision quantization-aware training (QAT)</strong> for transformer models,
-    enabling BERT to <strong>dynamically choose</strong> between <strong>INT4</strong> and <strong>INT8</strong> depending on
-    layer sensitivity. Using <strong>BERT-base-uncased</strong> on the <strong>MRPC (GLUE)</strong> dataset, the goal was to
-    reduce computation cost while preserving accuracy across FP32, INT8, INT4, and mixed-precision schemes.
-  </p>
+          <div class="section-title">Overview</div>
+          <p class="subtitle">
+            This project investigates <strong>mixed-precision quantization-aware training (QAT)</strong> for transformer
+            models,
+            enabling BERT to <strong>dynamically choose</strong> between <strong>INT4</strong> and <strong>INT8</strong>
+            depending on
+            layer sensitivity. Using <strong>BERT-base-uncased</strong> on the <strong>MRPC (GLUE)</strong> dataset, the
+            goal was to
+            reduce computation cost while preserving accuracy across FP32, INT8, INT4, and mixed-precision schemes.
+          </p>
 
-  <div class="section-title">Key Challenges</div>
-  <ul class="clean">
-    <li><strong>Transformer sensitivity to low precision</strong>: identifying which layers can tolerate INT4 and which require INT8.</li>
-    <li><strong>Stable QAT integration</strong>: injecting fake quantization modules without breaking transformer forward/backward passes.</li>
-    <li><strong>Adaptive precision rules</strong>: designing logic that lets the model select INT4/INT8 from weight and activation characteristics.</li>
-    <li><strong>Accuracy preservation</strong>: minimizing loss spikes and accuracy degradation during mixed-precision training.</li>
-  </ul>
+          <div class="section-title">Key Challenges</div>
+          <ul class="clean">
+            <li><strong>Transformer sensitivity to low precision</strong>: identifying which layers can tolerate INT4
+              and which require INT8.</li>
+            <li><strong>Stable QAT integration</strong>: injecting fake quantization modules without breaking
+              transformer forward/backward passes.</li>
+            <li><strong>Adaptive precision rules</strong>: designing logic that lets the model select INT4/INT8 from
+              weight and activation characteristics.</li>
+            <li><strong>Accuracy preservation</strong>: minimizing loss spikes and accuracy degradation during
+              mixed-precision training.</li>
+          </ul>
 
-  <div class="section-title">Approach</div>
-  <ul class="clean">
-    <li><strong>Architectural grounding</strong>: reviewed core transformer and LLM papers (BERT, Q8BERT, mixed-precision methods) to deepen understanding of self-attention, activation flow, and layer sensitivity, forming hypotheses for where low precision is safe.</li>
-    <li><strong>Per-layer analysis</strong>: examined before/after activation ranges, weight distributions, and input token sizes for each layer to measure tolerance to precision reduction in terms of stability and accuracy.</li>
-    <li><strong>QAT integration</strong>: implemented <strong>CustomQuantizationLayers</strong> across embeddings, self-attention, and FFN modules, applying fake quantization and clipping strategies during training.</li>
-    <li><strong>Adaptive precision selection</strong>: implemented multiple rules —
-      <strong>weight-based</strong> (INT4/INT8 from weight spread and sensitivity),
-      <strong>sampling-based</strong> (only a ratio of submodules in INT4),
-      and a <strong>predefined baseline</strong> — then compared their runtime and accuracy impact.</li>
-  </ul>
+          <div class="section-title">Approach</div>
+          <ul class="clean">
+            <li><strong>Architectural grounding</strong>: reviewed core transformer and LLM papers (BERT, Q8BERT,
+              mixed-precision methods) to deepen understanding of self-attention, activation flow, and layer
+              sensitivity, forming hypotheses for where low precision is safe.</li>
+            <li><strong>Per-layer analysis</strong>: examined before/after activation ranges, weight distributions, and
+              input token sizes for each layer to measure tolerance to precision reduction in terms of stability and
+              accuracy.</li>
+            <li><strong>QAT integration</strong>: implemented <strong>CustomQuantizationLayers</strong> across
+              embeddings, self-attention, and FFN modules, applying fake quantization and clipping strategies during
+              training.</li>
+            <li><strong>Adaptive precision selection</strong>: implemented multiple rules —
+              <strong>weight-based</strong> (INT4/INT8 from weight spread and sensitivity),
+              <strong>sampling-based</strong> (only a ratio of submodules in INT4),
+              and a <strong>predefined baseline</strong> — then compared their runtime and accuracy impact.
+            </li>
+          </ul>
 
-  <div class="section-title">Outcome</div>
-  <ul class="clean">
-    <li><strong>Mixed-precision BERT</strong>: built a model that <strong>automatically selects INT4 or INT8 per layer</strong>, reducing computation while keeping accuracy close to FP32.</li>
-    <li><strong>Layer sensitivity insight</strong>: confirmed that <strong>self-attention layers generally require higher precision</strong>, while many FFN layers operate safely in INT4.</li>
-    <li><strong>Better than uniform INT4</strong>: showed that adaptive mixed precision clearly outperforms uniform INT4 in stability and overall performance.</li>
-    <li><strong>Future directions</strong>: identified next steps such as evaluating on larger datasets, refining clipping strategies, and measuring real-world speed improvements.</li>
-  </ul>
-</article>
+          <div class="section-title">Outcome</div>
+          <ul class="clean">
+            <li><strong>Mixed-precision BERT</strong>: built a model that <strong>automatically selects INT4 or INT8 per
+                layer</strong>, reducing computation while keeping accuracy close to FP32.</li>
+            <li><strong>Layer sensitivity insight</strong>: confirmed that <strong>self-attention layers generally
+                require higher precision</strong>, while many FFN layers operate safely in INT4.</li>
+            <li><strong>Better than uniform INT4</strong>: showed that adaptive mixed precision clearly outperforms
+              uniform INT4 in stability and overall performance.</li>
+            <li><strong>Future directions</strong>: identified next steps such as evaluating on larger datasets,
+              refining clipping strategies, and measuring real-world speed improvements.</li>
+          </ul>
+        </article>
 
       </div>
     </section>
@@ -560,4 +706,5 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>
