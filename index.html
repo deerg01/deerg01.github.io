@@ -443,6 +443,65 @@
             <li>Evolved from app assembly to <strong>framework extension</strong>, adding the pieces the SDK lacked.</li>
           </ul>
         </article>
+
+        <!-- Project Card: Graduation Project – Mixed Precision BERT -->
+<article class="card" id="project-grad-bert">
+  <h3 style="font-size:18px; margin:0 0 12px;">
+    <span class="dots"></span>Graduation Project – Mixed Precision BERT Quantization
+  </h3>
+
+  <div class="project-links">
+    <!-- <a class="repo-link" href="#" target="_blank" rel="noopener">GitHub ↗</a> -->
+  </div>
+
+  <div class="section-title">Stack</div>
+  <div class="chips">
+    <span class="chip">Transformers</span>
+    <span class="chip">BERT</span>
+    <span class="chip">NLP</span>
+    <span class="chip">Quantization</span>
+    <span class="chip">Mixed Precision</span>
+    <span class="chip">QAT</span>
+    <span class="chip">PyTorch</span>
+    <span class="chip">GLUE / MRPC</span>
+  </div>
+
+  <div class="section-title">Overview</div>
+  <p class="subtitle">
+    This project investigates <strong>mixed-precision quantization-aware training (QAT)</strong> for transformer models,
+    enabling BERT to <strong>dynamically choose</strong> between <strong>INT4</strong> and <strong>INT8</strong> depending on
+    layer sensitivity. Using <strong>BERT-base-uncased</strong> on the <strong>MRPC (GLUE)</strong> dataset, the goal was to
+    reduce computation cost while preserving accuracy across FP32, INT8, INT4, and mixed-precision schemes.
+  </p>
+
+  <div class="section-title">Key Challenges</div>
+  <ul class="clean">
+    <li><strong>Transformer sensitivity to low precision</strong>: identifying which layers can tolerate INT4 and which require INT8.</li>
+    <li><strong>Stable QAT integration</strong>: injecting fake quantization modules without breaking transformer forward/backward passes.</li>
+    <li><strong>Adaptive precision rules</strong>: designing logic that lets the model select INT4/INT8 from weight and activation characteristics.</li>
+    <li><strong>Accuracy preservation</strong>: minimizing loss spikes and accuracy degradation during mixed-precision training.</li>
+  </ul>
+
+  <div class="section-title">Approach</div>
+  <ul class="clean">
+    <li><strong>Architectural grounding</strong>: reviewed core transformer and LLM papers (BERT, Q8BERT, mixed-precision methods) to deepen understanding of self-attention, activation flow, and layer sensitivity, forming hypotheses for where low precision is safe.</li>
+    <li><strong>Per-layer analysis</strong>: examined before/after activation ranges, weight distributions, and input token sizes for each layer to measure tolerance to precision reduction in terms of stability and accuracy.</li>
+    <li><strong>QAT integration</strong>: implemented <strong>CustomQuantizationLayers</strong> across embeddings, self-attention, and FFN modules, applying fake quantization and clipping strategies during training.</li>
+    <li><strong>Adaptive precision selection</strong>: implemented multiple rules —
+      <strong>weight-based</strong> (INT4/INT8 from weight spread and sensitivity),
+      <strong>sampling-based</strong> (only a ratio of submodules in INT4),
+      and a <strong>predefined baseline</strong> — then compared their runtime and accuracy impact.</li>
+  </ul>
+
+  <div class="section-title">Outcome</div>
+  <ul class="clean">
+    <li><strong>Mixed-precision BERT</strong>: built a model that <strong>automatically selects INT4 or INT8 per layer</strong>, reducing computation while keeping accuracy close to FP32.</li>
+    <li><strong>Layer sensitivity insight</strong>: confirmed that <strong>self-attention layers generally require higher precision</strong>, while many FFN layers operate safely in INT4.</li>
+    <li><strong>Better than uniform INT4</strong>: showed that adaptive mixed precision clearly outperforms uniform INT4 in stability and overall performance.</li>
+    <li><strong>Future directions</strong>: identified next steps such as evaluating on larger datasets, refining clipping strategies, and measuring real-world speed improvements.</li>
+  </ul>
+</article>
+
       </div>
     </section>
 
