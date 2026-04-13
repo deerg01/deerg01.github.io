@@ -415,8 +415,11 @@
           Projects ▾
         </button>
         <div class="nav-projects-menu">
+          <a href="#project-nagi">Nagi</a>
           <a href="#project-scenergy">Scenergy (macOS)</a>
+          <a href="#project-toki">Toki</a>
           <a href="#project-rootrip">Rootrip (iOS)</a>
+          <a href="#project-stellaiary">Stellaiary</a>
           <a href="#project-grad-bert">Mixed Precision BERT</a>
         </div>
       </div>
@@ -459,7 +462,7 @@
           ensure that my work is not only functional but also sustainable and aligned with long-term goals.
         </p>
         <p class="subtitle" style="margin-top:12px; line-height:1.7;">
-          Current interests: Audio DSP, LLM Architecture, ML Optimization, Application Development
+          Current interests: LLM Architecture, Application Development, ML Optimization, Audio DSP
         </p>
       </div>
     </section>
@@ -483,11 +486,6 @@
       <h2><span class="dots"></span>Education</h2>
       <ul class="clean">
         <li>
-          <strong>Rakuten Group Engineer </strong>
-          <span style="color: rgb(99, 54, 245); font-size: 80%;">2026.04 - NOW</span>
-          <div class="subtitle">Information System Developer</div>
-        </li>
-        <li>
           <strong>Apple Developer Academy @ POSTECH </strong>
           <span style="color: rgb(99, 54, 245); font-size: 80%;">2025.03 - 2025.12</span>
           <div class="subtitle">Application Development, Apple Frameworks, UI/UX Design, User Understanding, Market
@@ -507,10 +505,79 @@
 
       <div class="project-list">
 
+        <!-- Project Card: Nagi -->
+        <article class="card" id="project-nagi">
+          <h3 style="font-size:18px; margin:0 0 12px;">
+            <span class="dots"></span>Nagi – Motion-Adaptive Spatial Audio System (iOS)
+          </h3>
+
+          <div class="section-title">Stack</div>
+          <div class="chips">
+            <span class="chip">CoreMotion</span>
+            <span class="chip">AVAudioEngine</span>
+            <span class="chip">PHASE</span>
+            <span class="chip">Spatial Audio</span>
+            <span class="chip">DSP</span>
+            <span class="chip">SwiftUI</span>
+          </div>
+
+          <div class="section-title">Overview</div>
+          <p class="subtitle">
+            Nagi is an experimental system that explores how <strong>motion data can be translated into spatial
+              audio</strong>
+            to mitigate motion sickness. Using AirPods, the app attempts to create a perceptual illusion of
+            <strong>horizontal stability</strong> by generating audio that reacts inversely to device movement.
+            Rather than relying on predefined models, the project focuses on building a <strong>real-time
+              motion-to-sound pipeline</strong>
+            grounded in iterative hypothesis testing.
+          </p>
+
+          <div class="section-title">Key Challenges</div>
+          <ul class="clean">
+            <li><strong>Motion-to-audio transformation model</strong>: defining a mapping function between multi-axis
+              motion data and spatial audio parameters</li>
+            <li><strong>Lack of formal DSP model</strong>: designing and validating signal behavior without access to
+              established research frameworks</li>
+            <li><strong>Real-time processing constraints</strong>: maintaining low-latency audio response while
+              continuously updating motion input</li>
+            <li><strong>Perceptual validation</strong>: evaluating effectiveness based on subjective human response(User
+              test) rather than objective metrics</li>
+          </ul>
+
+          <div class="section-title">Approach</div>
+          <ul class="clean">
+            <li><strong>Motion signal acquisition</strong>: captured device acceleration and rotation using
+              <code>CoreMotion</code>, isolating relevant axes for horizontal instability
+            </li>
+            <li><strong>Inverse response modeling</strong>: designed functions that generate counter-phase audio signals
+              to offset perceived motion, iterating on scaling, damping, and smoothing factors</li>
+            <li><strong>Audio pipeline architecture</strong>: constructed a real-time processing chain using
+              <code>AVAudioEngine</code> and <code>PHASE</code> for spatial rendering and dynamic parameter control
+            </li>
+            <li><strong>Latency optimization</strong>: tuned buffer sizes and update intervals to ensure perceptually
+              immediate audio feedback</li>
+            <li><strong>Iterative user testing</strong>: continuously refined mapping models and interaction flow
+              through repeated real-world testing cycles</li>
+          </ul>
+
+          <div class="section-title">Outcome</div>
+          <ul class="clean">
+            <li>Developed a functional prototype of a <strong>motion-adaptive spatial audio system</strong></li>
+            <li>Established a working <strong>motion → signal → audio transformation pipeline</strong></li>
+            <li>Demonstrated that <strong>perceptual stabilization can be approximated</strong> through inverse audio
+              feedback</li>
+            <li>Gained hands-on experience in <strong>real-time signal processing, spatial audio design, and sensor
+                integration</strong></li>
+            <li>Strengthened ability to solve problems through <strong>hypothesis-driven iteration under
+                uncertainty</strong></li>
+          </ul>
+        </article>
+
         <!-- Project Card: Challenge 6 (macOS) -->
         <article class="card" id="project-scenergy">
           <h3 style="font-size:18px; margin:0 0 12px;">
-            <span class="dots"></span>Challenge 6 – Scenergy (macOS)
+            <span class="dots"></span>Apple Developer Academy Challenge 6 – Scenergy (macOS)
+          </h3>
           <div class="project-links">
             <a class="link" href="https://apps.apple.com/kr/app/scenergy/id6754666956?mt=12" target="_blank"
               rel="noopener">App Store ↗</a>
@@ -584,10 +651,69 @@
           </ul>
         </article>
 
+        <!-- Project Card: Toki -->
+        <article class="card" id="project-toki">
+          <h3 style="font-size:18px; margin:0 0 12px;">
+            <span class="dots"></span>Side Project - Toki (iOS)
+          </h3>
+          <div class="project-links">
+            <a class="link" href="https://apps.apple.com/jp/app/%EB%91%90%EB%B2%88%EC%95%8C%EB%A6%BC/id6752551268"
+              target="_blank" rel="noopener">App Store ↗</a>
+          </div>
+
+          <div class="section-title">Stack</div>
+          <div class="chips">
+            <span class="chip">Swift</span>
+            <span class="chip">SwiftUI</span>
+            <span class="chip">WatchOS</span>
+            <span class="chip">System Events</span>
+            <span class="chip">State Management</span>
+          </div>
+
+          <div class="section-title">Overview</div>
+          <p class="subtitle">
+            Toki is a cross-device alarm system that treats iPhone and Apple Watch as a
+            <strong>single synchronized system</strong> rather than independent apps.
+            The project focuses on maintaining <strong>consistent time computation and signal delivery</strong>
+            across different device states and execution contexts.
+          </p>
+
+          <div class="section-title">Key Challenges</div>
+          <ul class="clean">
+            <li><strong>Time consistency across lifecycle states</strong>: preventing drift between foreground,
+              background, and suspended states</li>
+            <li><strong>System-aware signal handling</strong>: adapting alarm behavior to silent mode, sound settings,
+              and device conditions</li>
+            <li><strong>Cross-device synchronization</strong>: ensuring both <code>iOS</code> and <code>watchOS</code> maintain identical timing
+              and state logic</li>
+            <li><strong>Shared architecture design</strong>: avoiding duplicated logic across platforms</li>
+          </ul>
+
+          <div class="section-title">Approach</div>
+          <ul class="clean">
+            <li><strong>Deterministic time model</strong>: implemented a computation-based timing system instead of
+              relying solely on system timers</li>
+            <li><strong>State-driven signal abstraction</strong>: designed notification behavior as a function of system
+              state rather than fixed triggers</li>
+            <li><strong>Shared core module</strong>: structured reusable logic that can be applied across <code>iOS</code> and
+            <code>watchOS</code> environments</li>
+            <li><strong>Synchronization strategy</strong>: aligned device behaviors to operate as a unified system with
+              consistent outputs</li>
+          </ul>
+
+          <div class="section-title">Outcome</div>
+          <ul class="clean">
+            <li>Built a <strong>cross-device synchronized alarm system</strong></li>
+            <li>Minimized timing inconsistencies across lifecycle transitions</li>
+            <li>Established a design approach centered on <strong>continuity, synchronization, and system-level
+                thinking</strong></li>
+          </ul>
+        </article>
+
         <!-- Project Card: Rootrip -->
         <article class="card" id="project-rootrip">
           <h3 style="font-size:18px; margin:0 0 12px;">
-            <span class="dots"></span>Challenge 4 – Rootrip (iOS)
+            <span class="dots"></span>Apple Developer Academy Challenge 4 – Rootrip (iOS)
           </h3>
           <div class="project-links">
             <!-- TODO: replace # with your repository URL -->
@@ -623,7 +749,7 @@
             </li>
             <li><strong>PencilKit bitmap output</strong>: freehand strokes lacked closed-area recognition and vector
               scalability.</li>
-            <li><strong>Data consistency</strong>: multi-user planning required local (SwiftData) ↔ cloud (Firestore)
+            <li><strong>Data consistency</strong>: multi-user planning required local <code>SwiftData</code> ↔ cloud <code>Firestore</code>
               sync with conflict policy.</li>
           </ul>
 
@@ -650,6 +776,65 @@
           </ul>
         </article>
 
+        <!-- Project Card: Stellaiary -->
+        <article class="card" id="project-stellaiary">
+          <h3 style="font-size:18px; margin:0 0 12px;">
+            <span class="dots"></span>Side Project - Stellaiary (iOS)
+          </h3>
+          <div class="project-links">
+            <a class="link" href="https://apps.apple.com/jp/app/stellaiary/id6745165356" target="_blank"
+              rel="noopener">App Store ↗</a>
+          </div>
+
+          <div class="section-title">Stack</div>
+          <div class="chips">
+            <span class="chip">SwiftUI</span>
+            <span class="chip">SwiftData</span>
+            <span class="chip">Custom UI Components</span>
+          </div>
+
+          <div class="section-title">Overview</div>
+          <p class="subtitle">
+            Stellaiary is a diary application built as an exploration of
+            <strong>SwiftUI’s structural boundaries and design philosophy</strong>.
+            Rather than focusing on features, the project investigates how far
+            declarative UI can be extended before encountering inherent framework limitations.
+          </p>
+
+          <div class="section-title">Key Challenges</div>
+          <ul class="clean">
+            <li><strong>Parallel layout constraints</strong>: inability to freely compose multiple views at the same
+              hierarchy level</li>
+            <li><strong>NavigationStack limitations</strong>: lack of full-height adaptive layout control</li>
+            <li><strong>Rendering model constraints</strong>: understanding how <code>SwiftUI</code> internally resolves layout and
+              view updates</li>
+            <li><strong>Custom shape abstraction</strong>: building reusable vector-based <code>UI components</code></li>
+          </ul>
+
+          <div class="section-title">Approach</div>
+          <ul class="clean">
+            <li><strong>Layout experimentation</strong>: tested multiple stacking and composition strategies to
+              simulate desired structures</li>
+            <li><strong>Framework analysis</strong>: identified limitations rooted in <code>SwiftUI</code>’s declarative rendering
+              model</li>
+            <li><strong>Vector-based UI system</strong>: implemented custom shapes and components beyond default
+              primitives</li>
+            <li><strong>Documentation-driven exploration</strong>: deeply analyzed <code>Apple Developer Documentation</code> to
+              understand design intent</li>
+            <li><strong>Design feedback loop</strong>: incorporated feedback from an Apple designer to refine UI
+              decisions</li>
+          </ul>
+
+          <div class="section-title">Outcome</div>
+          <ul class="clean">
+            <li>Built a functional diary app while mapping <strong>practical limits of <code>SwiftUI</code></strong></li>
+            <li>Developed a deeper understanding of <strong>Apple’s UI philosophy and constraints</strong></li>
+            <li>Established a foundation for designing <strong>complex UI systems within declarative
+                frameworks</strong></li>
+          </ul>
+        </article>
+
+
         <!-- Project Card: Graduation Project -->
         <article class="card" id="project-grad-bert">
           <h3 style="font-size:18px; margin:0 0 12px;">
@@ -673,11 +858,14 @@
 
           <div class="section-title">Overview</div>
           <p class="subtitle">
-            This project investigates <strong>mixed-precision quantization-aware training (QAT)</strong> for transformer
+            This project investigates <strong>mixed-precision quantization-aware training (QAT)</strong> for
+            transformer
             models,
-            enabling BERT to <strong>dynamically choose</strong> between <strong>INT4</strong> and <strong>INT8</strong>
+            enabling BERT to <strong>dynamically choose</strong> between <strong>INT4</strong> and
+            <strong>INT8</strong>
             depending on
-            layer sensitivity. Using <strong>BERT-base-uncased</strong> on the <strong>MRPC (GLUE)</strong> dataset, the
+            layer sensitivity. Using <strong>BERT-base-uncased</strong> on the <strong>MRPC (GLUE)</strong> dataset,
+            the
             goal was to
             reduce computation cost while preserving accuracy across FP32, INT8, INT4, and mixed-precision schemes.
           </p>
@@ -699,7 +887,8 @@
             <li><strong>Architectural grounding</strong>: reviewed core transformer and LLM papers to deepen
               understanding of self-attention, activation flow, and layer
               sensitivity, forming hypotheses for where low precision is safe.</li>
-            <li><strong>Per-layer analysis</strong>: examined before/after activation ranges, weight distributions, and
+            <li><strong>Per-layer analysis</strong>: examined before/after activation ranges, weight distributions,
+              and
               input token sizes for each layer to measure tolerance to precision reduction in terms of stability and
               accuracy.</li>
             <li><strong>QAT integration</strong>: implemented <strong>CustomQuantizationLayers</strong> across
